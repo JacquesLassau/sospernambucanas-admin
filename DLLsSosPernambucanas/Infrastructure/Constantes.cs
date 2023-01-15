@@ -27,7 +27,7 @@
         {
             EM_ESPERA = 1,
             EM_ANDAMENTO = 2,
-            FINALIZADAS = 3
+            FINALIZADA = 3
         }
         #endregion
 

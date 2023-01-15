@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Net.Mail;
 using System.Text;
 
@@ -9,7 +8,7 @@ namespace DLLsSosPernambucanas.Infrastructure
     {
         public static string StrTokenMD5(string emailUsuario)
         {
-            string keyMd5Token = emailUsuario + DateTime.UtcNow.ToString("dd/MM/yyyy HH:mm:ss");
+            string keyMd5Token = string.Concat(emailUsuario, DateTime.UtcNow.ToString("dd/MM/yyyy HH:mm:ss"));
 
             using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
             {

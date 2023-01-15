@@ -86,15 +86,9 @@ namespace DLLsSosPernambucanas.DML
         public LocalApoioViewModelDML ConvertToListLocals(List<LocalApoio> listaLocaisApoio)
         {
             LocalApoioViewModelDML localApoioViewModel = new LocalApoioViewModelDML();
-            if (listaLocaisApoio != null)
-            {
-                // localApoioControllerModel.LocalApoio = listaLocaisApoio;
-                // foreach está sendo usado para CASO deseje incluir validação no carregamento dos registros via conversão
-                foreach (var locaisApoio in listaLocaisApoio)
-                {
-                    localApoioViewModel.LocalApoio.Add(locaisApoio);
-                }
-            }
+
+            if (listaLocaisApoio != null)            
+                localApoioViewModel.LocalApoio = listaLocaisApoio;            
 
             return localApoioViewModel;
         }

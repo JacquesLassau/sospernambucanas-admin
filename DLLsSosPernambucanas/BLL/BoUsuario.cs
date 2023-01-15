@@ -6,15 +6,20 @@ namespace DLLsSosPernambucanas.BLL
 {
     public class BoUsuario
     {
+        DALUsuario _daoUsuario;
+
+        public BoUsuario()
+        {
+            _daoUsuario = new DALUsuario();
+        }
         /// <summary>
         /// Cadastra um novo usuario.
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns></returns>
         public void IncluirUsuario(Usuario usuario)
-        {
-            DaoUsuario daoUsuario = new DaoUsuario();
-            daoUsuario.IncluirUsuarioDb(usuario);
+        {            
+            _daoUsuario.IncluirUsuarioDb(usuario);
         }
 
         /// <summary>
@@ -23,9 +28,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="usuario"></param>
         /// <returns>Instancia do usuario</returns>
         public Usuario AcessoUsuario(Usuario usuario)
-        {
-            DaoUsuario daoUsuario = new DaoUsuario();
-            return daoUsuario.AcessoUsuarioDb(usuario);
+        {            
+            return _daoUsuario.AcessoUsuarioDb(usuario);
         }
 
         /// <summary>
@@ -34,9 +38,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="email"></param>
         /// <returns>Cadeia de caracteres contendo log da ação.</returns>
         public bool VerificarEmailUsuario(int tipo, string email)
-        {
-            DaoUsuario daoUsuario = new DaoUsuario();
-            if (daoUsuario.VerificarEmailUsuarioDb(tipo, email))
+        {            
+            if (_daoUsuario.VerificarEmailUsuarioDb(tipo, email))
                 return true;
             else
                 return false;
@@ -50,9 +53,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="novaSenhaUsuario"></param>
         /// <returns></returns>
         public void AlterarSenhaUsuario(Usuario usuario)
-        {
-            DaoUsuario daoUsuario = new DaoUsuario();
-            daoUsuario.AlterarSenhaUsuarioDb(usuario);
+        {            
+            _daoUsuario.AlterarSenhaUsuarioDb(usuario);
         }
     }
 }

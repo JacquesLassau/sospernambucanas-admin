@@ -8,6 +8,13 @@ namespace DLLsSosPernambucanas.BLL
 {
     public class BoAtendente
     {
+        DALAtendente _dalAtendente;
+
+        public BoAtendente()
+        {
+            _dalAtendente = new DALAtendente();
+        }
+
         /// <summary>
         /// Cadastra um novo atendente.
         /// </summary>
@@ -17,9 +24,8 @@ namespace DLLsSosPernambucanas.BLL
         {
             atendente.Situacao = Convert.ToInt32(Constantes.SituacaoUsuario.ATIVO);
             atendente.Tipo = Convert.ToInt32(Constantes.TipoUsuario.ATENDENTE);
-
-            DaoAtendente daoAtendente = new DaoAtendente();
-            string result = daoAtendente.IncluirAtendenteDb(atendente);
+                        
+            string result = _dalAtendente.IncluirAtendenteDb(atendente);
 
             if (result == null)
                 return Constantes.CADASTRO_ATENDENTE_SUCESSO;
@@ -33,9 +39,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="atendente"></param>
         /// <returns>Cadeia de caracteres contendo log da ação.</returns>
         public string EditarAtendente(Atendente atendente)
-        {
-            DaoAtendente daoAtendente = new DaoAtendente();
-            string result = daoAtendente.EditarAtendenteDb(atendente);
+        {            
+            string result = _dalAtendente.EditarAtendenteDb(atendente);
 
             if (result == null)
                 return Constantes.ALTERACAO_ATENDENTE_SUCESSO;
@@ -51,9 +56,8 @@ namespace DLLsSosPernambucanas.BLL
         public string ExcluirAtendente(Atendente atendente)
         {
             atendente.Situacao = Convert.ToInt32(Constantes.SituacaoUsuario.INATIVO);            
-
-            DaoAtendente daoAtendente = new DaoAtendente();
-            string result = daoAtendente.ExcluirAtendenteDb(atendente);
+                        
+            string result = _dalAtendente.ExcluirAtendenteDb(atendente);
 
             if (result == null)
                 return Constantes.EXCLUSAO_ATENDENTE_SUCESSO;
@@ -67,9 +71,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param></param>
         /// <returns>Propriedade do tipo List<Atendente></returns>
         public List<Atendente> ListaAtendentes()
-        {
-            DaoAtendente daoAtendente = new DaoAtendente();
-            return daoAtendente.ListarAtendentesDb();
+        {            
+            return _dalAtendente.ListarAtendentesDb();
         }
 
         /// <summary>
@@ -78,9 +81,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="idAtendente"></param>
         /// <returns>Propriedade do tipo Atendente</returns>
         public Atendente SelecionaAtendente(int idAtendente)
-        {
-            DaoAtendente daoAtendente = new DaoAtendente();
-            return daoAtendente.SelecionarAtendenteDb(idAtendente);
+        {            
+            return _dalAtendente.SelecionarAtendenteDb(idAtendente);
         }
     }
 }

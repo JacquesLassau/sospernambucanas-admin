@@ -1,15 +1,13 @@
 ﻿using DLLsSosPernambucanas.DAL;
 using DLLsSosPernambucanas.DML;
 using DLLsSosPernambucanas.Infrastructure;
-using System.Collections.Generic;
-using System;
 
 namespace DLLsSosPernambucanas.BLL
 {
     public class BoRegistroLigacao
     {
         /// <summary>
-        /// Cadastra um novo denunciante.
+        /// Cadastra um novo registro de ligação.
         /// </summary>
         /// <param name="telDiscado"></param>
         /// <param name="emailUsuario"></param>
@@ -24,14 +22,11 @@ namespace DLLsSosPernambucanas.BLL
 
             if (registro.Numero == Constantes.CENTRAL_ATENDIMENTO_MULHER)
                 registro.Descricao = Constantes.CENTRAL_ATENDIMENTO_MULHER_DESCRICAO;
-            else if(registro.Numero == Constantes.POLICIA.ToString())
+            else if (registro.Numero == Constantes.POLICIA)
                 registro.Descricao = Constantes.POLICIA_DESCRICAO;
 
-            DaoRegistroLigacao daoRegistroLigacao = new DaoRegistroLigacao();
-            if (daoRegistroLigacao.CadastraRegistroLigacaoDb(registro, usuario.Email))
-                return true;
-            else
-                return false;
+            DALRegistroLigacao dalRegistroLigacao = new DALRegistroLigacao();
+            return dalRegistroLigacao.CadastraRegistroLigacaoDb(registro, usuario.Email);
         }
     }
 }

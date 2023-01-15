@@ -7,6 +7,12 @@ namespace DLLsSosPernambucanas.BLL
 {
     public class BoToken
     {
+        DALToken _dalToken;
+        public BoToken()
+        {
+            _dalToken = new DALToken();
+        }
+
         /// <summary>
         /// Cadastra um novo token.
         /// </summary>
@@ -14,8 +20,7 @@ namespace DLLsSosPernambucanas.BLL
         /// <returns></returns>
         public void IncluirToken(Token token)
         {
-            DaoToken daoToken = new DaoToken();
-            daoToken.IncluirTokenDb(token);
+            _dalToken.IncluirTokenDb(token);
         }
 
         /// <summary>
@@ -25,8 +30,7 @@ namespace DLLsSosPernambucanas.BLL
         /// <returns></returns>
         public void GravarAcessoToken(string token)
         {
-            DaoToken daoToken = new DaoToken();
-            daoToken.GravarAcessoTokenDb(token);
+            _dalToken.GravarAcessoTokenDb(token);
         }
 
         /// <summary>
@@ -35,9 +39,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="token"></param>        
         /// <returns>Retorna e-mail do usuário vinculado ao token.</returns>
         public string BuscarEmailToken(string token)
-        {
-            DaoToken daoToken = new DaoToken();
-            return daoToken.BuscarEmailTokenDb(token);
+        {            
+            return _dalToken.BuscarEmailTokenDb(token);
         }
 
         /// <summary>
@@ -46,9 +49,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="token"></param>        
         /// <returns>Retorna se o token foi usado ou não.</returns>
         public string BuscarValidadeToken(string token)
-        {
-            DaoToken daoToken = new DaoToken();
-            return daoToken.BuscarValidadeTokenDb(token);
+        {            
+            return _dalToken.BuscarValidadeTokenDb(token);
         }
 
     }

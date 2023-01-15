@@ -8,6 +8,11 @@ namespace DLLsSosPernambucanas.BLL
 {
     public class BoDenunciante
     {
+        DALDenunciante _dalDenunciante;
+        public BoDenunciante()
+        {
+            _dalDenunciante = new DALDenunciante();
+        }
         /// <summary>
         /// Cadastra um novo denunciante.
         /// </summary>
@@ -18,20 +23,12 @@ namespace DLLsSosPernambucanas.BLL
             denunciante.Situacao = Convert.ToInt32(Constantes.SituacaoUsuario.ATIVO);
             denunciante.Tipo = Convert.ToInt32(Constantes.TipoUsuario.DENUNCIANTE);
 
-            BoUsuario boUsuario = new BoUsuario();
+            BoUsuario boUsuario = new BoUsuario();            
 
-            bool existeEmailusuario = boUsuario.VerificarEmailUsuario(denunciante.Tipo, denunciante.Email);
-
-            if (!existeEmailusuario)
-            {
-                DaoDenunciante daoDenunciante = new DaoDenunciante();
-                Denunciante usuDenunciante  = daoDenunciante.IncluirDenuncianteDb(denunciante);
-
-                return usuDenunciante;
-            }
+            if (!boUsuario.VerificarEmailUsuario(denunciante.Tipo, denunciante.Email))                            
+                return _dalDenunciante.IncluirDenuncianteDb(denunciante);                            
             else            
-                return null;
-                       
+                return null;                       
         }
 
         /// <summary>
@@ -40,9 +37,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="denunciante"></param>
         /// <returns>Cadeia de caracteres contendo log da ação.</returns>
         public string EditarDenunciante(Denunciante denunciante)
-        {
-            DaoDenunciante daoDenunciante = new DaoDenunciante();
-            string result = daoDenunciante.EditarDenuncianteDb(denunciante);
+        {            
+            string result = _dalDenunciante.EditarDenuncianteDb(denunciante);
 
             if (string.IsNullOrEmpty(result))
                 return Constantes.ALTERACAO_DENUNCIANTE_SUCESSO;
@@ -57,10 +53,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <returns>Cadeia de caracteres contendo log da ação.</returns>
         public string ExcluirDenunciante(Denunciante denunciante)
         {
-            denunciante.Situacao = Convert.ToInt32(Constantes.SituacaoUsuario.INATIVO);           
-
-            DaoDenunciante daoDenunciante = new DaoDenunciante();
-            string result = daoDenunciante.ExcluirDenuncianteDb(denunciante);
+            denunciante.Situacao = Convert.ToInt32(Constantes.SituacaoUsuario.INATIVO);
+            string result = _dalDenunciante.ExcluirDenuncianteDb(denunciante);
 
             if (result == null)
                 return Constantes.EXCLUSAO_DENUNCIANTE_SUCESSO;
@@ -74,9 +68,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param></param>
         /// <returns>Propriedade do tipo List<Denunciante></returns>
         public List<Denunciante> ListaDenunciantes()
-        {
-            DaoDenunciante daoDenunciante = new DaoDenunciante();
-            return daoDenunciante.ListarDenunciantesDb();
+        {            
+            return _dalDenunciante.ListarDenunciantesDb();
         }
 
         /// <summary>
@@ -85,9 +78,8 @@ namespace DLLsSosPernambucanas.BLL
         /// <param name="idDenunciante"></param>
         /// <returns>Propriedade do tipo Denunciante</returns>
         public Denunciante SelecionaDenunciante(int idDenunciante)
-        {
-            DaoDenunciante daoDenunciante = new DaoDenunciante();
-            return daoDenunciante.SelecionarDenuncianteDb(idDenunciante);
+        {            
+            return _dalDenunciante.SelecionarDenuncianteDb(idDenunciante);
         }
     }
 }

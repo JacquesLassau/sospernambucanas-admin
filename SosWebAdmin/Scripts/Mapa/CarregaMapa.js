@@ -55,6 +55,7 @@ function LoadMap() {
 
                     $("#modalLocalApoio").modal('show');                  
                 });
+
             })(marker, localApoio);
         }
     });    

@@ -1,5 +1,0 @@
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\bin\Debug\DLLsSosPernambucanas.dll
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\bin\Debug\DLLsSosPernambucanas.pdb
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Debug\DLLsSosPernambucanas.csproj.CoreCompileInputs.cache
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Debug\DLLsSosPernambucanas.dll
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Debug\DLLsSosPernambucanas.pdb

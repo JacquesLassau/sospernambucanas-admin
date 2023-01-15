@@ -1,6 +1,0 @@
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\bin\Release\DLLsSosPernambucanas.dll
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\bin\Release\DLLsSosPernambucanas.pdb
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Release\DLLsSosPernambucanas.csproj.CoreCompileInputs.cache
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Release\DLLsSosPernambucanas.dll
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Release\DLLsSosPernambucanas.pdb
-D:\GitHub\SosPernambucanas\DLLsSosPernambucanas\obj\Release\DLLsSosPernambucanas.csproj.AssemblyReference.cache
